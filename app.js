@@ -26,137 +26,137 @@ const meals = [
     image: "images/spagete_karbonara.jpg"
   },
   {
-    id: 26,
+    id: 5,
     name: "Špagete bolonjeze",
     image: "images/spagete_bolonjeze.jpg"
   },
   {
-    id: 5,
+    id: 6,
     name: "Musaka sa krompirom",
     image: "images/musaka_sa_krompirom.jpg"
   },
   {
-    id: 27,
+    id: 7,
     name: "Musaka sa tikvicama",
     image: "images/musaka_sa_tikvicama.jpg"
   },
   {
-    id: 6,
+    id: 8,
     name: "Pilav sa piletinom",
     image: "images/pilav_sa_piletinom.jpg"
   },
   {
-    id: 7,
+    id: 9,
     name: "Ćufte",
     image: "images/cufte.jpg"
   },
   {
-    id: 8,
+    id: 10,
     name: "Pirinač sa povrćem",
     image: "images/pirinac_sa_povrcem.jpg"
   },
   {
-    id: 9,
+    id: 11,
     name: "Goveđi gulaš",
     image: "images/govedji_gulas.jpg"
   },
   {
-    id: 10,
+    id: 12,
     name: "Punjene paprike",
     image: "images/punjene_paprike.jpg"
   },
   {
-    id: 11,
+    id: 13,
     name: "Riblji štapići",
     image: "images/riblji_stapici.jpg"
   },
   {
-    id: 12,
+    id: 14,
     name: "Krompir pire",
     image: "images/krompir_pire.jpg"
   },
   {
-    id: 13,
+    id: 15,
     name: "Bečka šnicla",
     image: "images/becka_snicla.jpg"
   },
   {
-    id: 14,
+    id: 16,
     name: "Pečena piletina",
     image: "images/pecena_piletina.jpg"
   },
   {
-    id: 15,
+    id: 17,
     name: "Teleća čorba",
     image: "images/teleca_corba.jpg"
   },
   {
-    id: 16,
+    id: 18,
     name: "Pica",
     image: "images/pica.jpg"
   },
   {
-    id: 17,
+    id: 19,
     name: "Grašak",
     image: "images/grasak.jpg"
   },
   {
-    id: 18,
+    id: 20,
     name: "Kuvana boranija",
     image: "images/kuvana_boranija.jpg"
   },
   {
-    id: 19,
+    id: 21,
     name: "Jagnjetina iz rerne",
     image: "images/jagnjetina_iz_rerne.jpg"
   },
   {
-    id: 20,
+    id: 22,
     name: "Pohovana piletina",
     image: "images/pohovana_piletina.jpg"
   },
   {
-    id: 21,
+    id: 23,
     name: "Paprikaš",
     image: "images/paprikas.jpg"
   },
   {
-    id: 22,
+    id: 24,
     name: "Makarone sa sirom",
     image: "images/makarone_sa_sirom.jpg"
   },
   {
-    id: 23,
+    id: 25,
     name: "Sataraš",
     image: "images/sataras.jpg"
   },
   {
-    id: 24,
+    id: 25,
     name: "Krem čorba",
     image: "images/krem_corba.jpg"
   },
   {
-    id: 25,
+    id: 27,
     name: "Lazanje",
     image: "images/lazanje.jpg"
   },
   {
-    id: 26,
+    id: 28,
     name: "Burger",
     image: "images/burger.jpg"
   },
   {
-    id: 27,
+    id: 29,
     name: "Brancin",
     image: "images/brancin.jpg"
   },
   {
-    id: 28,
+    id: 30,
     name: "Pastrmka",
     image: "images/pastrmka.jpg"
   },
   {
-    id: 29,
+    id: 31,
     name: "Losos",
     image: "images/losos.jpg"
   }
