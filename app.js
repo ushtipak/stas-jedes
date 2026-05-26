@@ -131,7 +131,7 @@ const meals = [
     image: "images/sataras.jpg"
   },
   {
-    id: 25,
+    id: 26,
     name: "Krem čorba",
     image: "images/krem_corba.jpg"
   },
