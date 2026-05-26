@@ -134,6 +134,31 @@ const meals = [
     id: 24,
     name: "Krem čorba",
     image: "images/krem_corba.jpg"
+  },
+  {
+    id: 25,
+    name: "Lazanje",
+    image: "images/lazanje.jpg"
+  },
+  {
+    id: 26,
+    name: "Burger",
+    image: "images/burger.jpg"
+  },
+  {
+    id: 27,
+    name: "Brancin",
+    image: "images/brancin.jpg"
+  },
+  {
+    id: 28,
+    name: "Pastrmka",
+    image: "images/pastrmka.jpg"
+  },
+  {
+    id: 29,
+    name: "Losos",
+    image: "images/losos.jpg"
   }
 ];
 
