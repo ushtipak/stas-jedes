@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="sr-Latn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffcf48">
+    <title>Šta jedemo?</title>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://images.pexels.com">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app" aria-live="polite">
+      <section class="screen welcome-screen" id="welcome-screen">
+        <div class="brand-bubble" aria-hidden="true">?</div>
+        <p class="eyebrow">Porodična igra za klopu</p>
+        <h1>Šta jedemo?</h1>
+        <p class="intro">
+          Pogledaj sliku jela i reci kako ti se dopada. Nema pogrešnog odgovora:
+          samo biraš šta voliš, šta može, a šta ne voliš.
+        </p>
+        <button class="primary-action" id="start-button" type="button">
+          Počni glasanje
+        </button>
+        <button class="text-action hidden" id="resume-button" type="button">
+          Nastavi započeto
+        </button>
+      </section>
+
+      <section class="screen vote-screen hidden" id="vote-screen">
+        <header class="top-bar">
+          <div>
+            <p class="eyebrow">Jelo za ocenu</p>
+            <h2 id="meal-name">Palacinke</h2>
+          </div>
+          <div class="progress-pill" id="progress-label">1 / 24</div>
+        </header>
+
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <figure class="meal-card">
+          <img id="meal-image" src="" alt="">
+          <figcaption id="meal-caption">Kako ti se dopada?</figcaption>
+        </figure>
+
+        <div class="vote-actions" aria-label="Glasanje">
+          <button class="vote-button like" data-vote="like" type="button">
+            <span aria-hidden="true">👍</span>
+            <strong>Volim</strong>
+          </button>
+          <button class="vote-button neutral" data-vote="neutral" type="button">
+            <span aria-hidden="true">😐</span>
+            <strong>Može</strong>
+          </button>
+          <button class="vote-button dislike" data-vote="dislike" type="button">
+            <span aria-hidden="true">👎</span>
+            <strong>Ne volim</strong>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen results-screen hidden" id="results-screen">
+        <p class="eyebrow">Gotovo glasanje</p>
+        <h2>Rezultati</h2>
+        <p class="results-copy" id="results-summary"></p>
+
+        <div class="results-grid">
+          <article class="result-group favorites">
+            <h3>❤️ Omiljeno <span id="like-count">0</span></h3>
+            <ul id="like-list"></ul>
+          </article>
+          <article class="result-group okay">
+            <h3>😐 Može <span id="neutral-count">0</span></h3>
+            <ul id="neutral-list"></ul>
+          </article>
+          <article class="result-group nope">
+            <h3>👎 Nije favorit <span id="dislike-count">0</span></h3>
+            <ul id="dislike-list"></ul>
+          </article>
+        </div>
+
+        <button class="primary-action" id="restart-button" type="button">
+          Počni ponovo
+        </button>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
