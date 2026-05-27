@@ -46,6 +46,10 @@
         </figure>
 
         <div class="vote-actions" aria-label="Glasanje">
+          <button class="vote-button love" data-vote="love" type="button">
+            <span aria-hidden="true">❤️</span>
+            <strong>Obožavam</strong>
+          </button>
           <button class="vote-button like" data-vote="like" type="button">
             <span aria-hidden="true">👍</span>
             <strong>Volim</strong>
@@ -54,10 +58,22 @@
             <span aria-hidden="true">😐</span>
             <strong>Može</strong>
           </button>
+          <button class="vote-button meh" data-vote="meh" type="button">
+            <span aria-hidden="true">🤏</span>
+            <strong>Jedva</strong>
+          </button>
           <button class="vote-button dislike" data-vote="dislike" type="button">
             <span aria-hidden="true">👎</span>
             <strong>Ne volim</strong>
           </button>
+          <div class="vote-separator" aria-hidden="true"></div>
+          <button class="vote-button unknown" data-vote="unknown" type="button">
+            <span aria-hidden="true">🤷</span>
+            <strong>Ne znam</strong>
+          </button>
+        </div>
+        <div class="vote-footer">
+          <button class="detail-toggle" id="detail-toggle" type="button">Više opcija</button>
         </div>
       </section>
 
@@ -66,18 +82,30 @@
         <h2>Rezultati</h2>
         <p class="results-copy" id="results-summary"></p>
 
-        <div class="results-grid">
+        <div class="results-grid" id="results-grid">
+          <article class="result-group love-group">
+            <h3>❤️ Obožava <span id="love-count">0</span></h3>
+            <ul id="love-list"></ul>
+          </article>
           <article class="result-group favorites">
-            <h3>❤️ Omiljeno <span id="like-count">0</span></h3>
+            <h3>👍 Voli <span id="like-count">0</span></h3>
             <ul id="like-list"></ul>
           </article>
           <article class="result-group okay">
             <h3>😐 Može <span id="neutral-count">0</span></h3>
             <ul id="neutral-list"></ul>
           </article>
+          <article class="result-group meh-group">
+            <h3>🤏 Jedva <span id="meh-count">0</span></h3>
+            <ul id="meh-list"></ul>
+          </article>
           <article class="result-group nope">
-            <h3>👎 Nije favorit <span id="dislike-count">0</span></h3>
+            <h3>👎 Ne voli <span id="dislike-count">0</span></h3>
             <ul id="dislike-list"></ul>
+          </article>
+          <article class="result-group unknown-group">
+            <h3>🤷 Ne zna <span id="unknown-count">0</span></h3>
+            <ul id="unknown-list"></ul>
           </article>
         </div>
 

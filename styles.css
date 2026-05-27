@@ -215,6 +215,64 @@ h2 {
   gap: 12px;
 }
 
+.vote-actions.detail {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) 2px minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.vote-separator {
+  display: none;
+  align-self: stretch;
+  background: var(--line);
+  border-radius: 2px;
+  margin-block: 4px;
+}
+
+.vote-actions.detail .vote-separator {
+  display: block;
+}
+
+.vote-button.love,
+.vote-button.meh,
+.vote-button.unknown {
+  display: none;
+}
+
+.vote-actions.detail .vote-button.love,
+.vote-actions.detail .vote-button.meh,
+.vote-actions.detail .vote-button.unknown {
+  display: flex;
+}
+
+.vote-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.detail-toggle {
+  border: 2px dashed var(--line);
+  border-radius: 999px;
+  padding: 8px 20px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 160ms, color 160ms, background 160ms;
+}
+
+.detail-toggle:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.detail-toggle.active {
+  border-style: solid;
+  border-color: var(--grape);
+  background: rgba(139, 108, 255, 0.08);
+  color: var(--grape);
+}
+
 .vote-button {
   min-height: 112px;
   border: 4px solid var(--ink);
@@ -238,6 +296,10 @@ h2 {
   font-size: clamp(1rem, 4vw, 1.35rem);
 }
 
+.vote-button.love {
+  background: #ffb3c1;
+}
+
 .vote-button.like {
   background: #a8efc7;
 }
@@ -246,8 +308,16 @@ h2 {
   background: #ffe58f;
 }
 
+.vote-button.meh {
+  background: #ffd9a0;
+}
+
 .vote-button.dislike {
   background: #ffadad;
+}
+
+.vote-button.unknown {
+  background: #ddd6fe;
 }
 
 .vote-button:active {
@@ -261,6 +331,22 @@ h2 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   text-align: left;
+}
+
+.results-grid.detail {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.result-group.love-group,
+.result-group.meh-group,
+.result-group.unknown-group {
+  display: none;
+}
+
+.results-grid.detail .result-group.love-group,
+.results-grid.detail .result-group.meh-group,
+.results-grid.detail .result-group.unknown-group {
+  display: block;
 }
 
 .result-group {
@@ -310,6 +396,10 @@ h2 {
   font-weight: 700;
 }
 
+.love-group {
+  background: #ffe4ea;
+}
+
 .favorites {
   background: #ecfff4;
 }
@@ -318,8 +408,16 @@ h2 {
   background: #fff6cf;
 }
 
+.meh-group {
+  background: #fff0d6;
+}
+
 .nope {
   background: #ffe8e8;
+}
+
+.unknown-group {
+  background: #ede9ff;
 }
 
 @keyframes pop-in {
@@ -350,6 +448,18 @@ h2 {
   .vote-actions,
   .results-grid {
     grid-template-columns: 1fr;
+  }
+
+  .vote-actions.detail {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vote-actions.detail .vote-separator {
+    display: none;
+  }
+
+  .results-grid.detail {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .vote-actions {

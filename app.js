@@ -1,4 +1,5 @@
-const STORAGE_KEY = "sta-jedemo-session-v1";
+const STORAGE_KEY = "stas-jedes-session-v3";
+const DETAIL_KEY = "stas-jedes-detail-mode";
 
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
@@ -177,6 +178,11 @@ const mealCaption = document.querySelector("#meal-caption");
 const progressLabel = document.querySelector("#progress-label");
 const progressFill = document.querySelector("#progress-fill");
 const resultsSummary = document.querySelector("#results-summary");
+const detailToggle = document.querySelector("#detail-toggle");
+const voteActions = document.querySelector(".vote-actions");
+const resultsGrid = document.querySelector("#results-grid");
+
+let detailMode = localStorage.getItem(DETAIL_KEY) === "true";
 
 let session = loadSession();
 
@@ -257,6 +263,12 @@ function getCurrentMeal() {
   return meals.find((meal) => meal.id === id);
 }
 
+function applyDetailMode() {
+  voteActions.classList.toggle("detail", detailMode);
+  detailToggle.textContent = detailMode ? "Manje opcija" : "Više opcija";
+  detailToggle.classList.toggle("active", detailMode);
+}
+
 function renderCurrentMeal() {
   const meal = getCurrentMeal();
   const completeCount = Object.keys(session.votes).length;
@@ -268,6 +280,7 @@ function renderCurrentMeal() {
   mealCaption.textContent = "Kako ti se dopada?";
   progressLabel.textContent = `${nextNumber} / ${meals.length}`;
   progressFill.style.width = `${(completeCount / meals.length) * 100}%`;
+  applyDetailMode();
   showScreen("vote");
 }
 
@@ -287,32 +300,59 @@ function voteForCurrentMeal(vote) {
 
 function renderResults() {
   const grouped = {
+    love: [],
     like: [],
     neutral: [],
-    dislike: []
+    meh: [],
+    dislike: [],
+    unknown: []
   };
 
   session.order.forEach((id) => {
     const vote = session.votes[id];
     const meal = meals.find((item) => item.id === id);
 
-    if (vote && meal) {
+    if (vote && meal && grouped[vote]) {
       grouped[vote].push(meal);
     }
   });
 
-  renderList("like-list", grouped.like);
-  renderList("neutral-list", grouped.neutral);
-  renderList("dislike-list", grouped.dislike);
+  if (detailMode) {
+    resultsGrid.classList.add("detail");
+    renderList("love-list", grouped.love);
+    renderList("like-list", grouped.like);
+    renderList("neutral-list", grouped.neutral);
+    renderList("meh-list", grouped.meh);
+    renderList("dislike-list", grouped.dislike);
+    renderList("unknown-list", grouped.unknown);
+    document.querySelector("#love-count").textContent = grouped.love.length;
+    document.querySelector("#like-count").textContent = grouped.like.length;
+    document.querySelector("#neutral-count").textContent = grouped.neutral.length;
+    document.querySelector("#meh-count").textContent = grouped.meh.length;
+    document.querySelector("#dislike-count").textContent = grouped.dislike.length;
+    document.querySelector("#unknown-count").textContent = grouped.unknown.length;
+  } else {
+    resultsGrid.classList.remove("detail");
+    const likeMerged = [...grouped.love, ...grouped.like];
+    const neutralMerged = [...grouped.neutral, ...grouped.meh];
+    renderList("love-list", []);
+    renderList("like-list", likeMerged);
+    renderList("neutral-list", neutralMerged);
+    renderList("meh-list", []);
+    renderList("dislike-list", grouped.dislike);
+    renderList("unknown-list", []);
+    document.querySelector("#love-count").textContent = 0;
+    document.querySelector("#like-count").textContent = likeMerged.length;
+    document.querySelector("#neutral-count").textContent = neutralMerged.length;
+    document.querySelector("#meh-count").textContent = 0;
+    document.querySelector("#dislike-count").textContent = grouped.dislike.length;
+    document.querySelector("#unknown-count").textContent = 0;
+  }
 
-  document.querySelector("#like-count").textContent = grouped.like.length;
-  document.querySelector("#neutral-count").textContent = grouped.neutral.length;
-  document.querySelector("#dislike-count").textContent = grouped.dislike.length;
-
+  const voted = session.order.length - grouped.unknown.length;
   resultsSummary.textContent =
-    `Ocenjeno je ${session.order.length} jela: ` +
-    `${grouped.like.length} omiljenih, ${grouped.neutral.length} koja mogu i ` +
-    `${grouped.dislike.length} koja nisu favorit.`;
+    `Ocenjeno je ${voted} jela` +
+    (grouped.unknown.length ? `, ${grouped.unknown.length} nepoznatih` : "") + ".";
 
   progressFill.style.width = "100%";
   showScreen("results");
@@ -358,7 +398,17 @@ restartButton.addEventListener("click", () => {
 });
 
 document.querySelectorAll(".vote-button").forEach((button) => {
-  button.addEventListener("click", () => voteForCurrentMeal(button.dataset.vote));
+  button.addEventListener("click", () => {
+    const vote = button.dataset.vote;
+    if (!detailMode && (vote === "love" || vote === "meh" || vote === "unknown")) return;
+    voteForCurrentMeal(vote);
+  });
+});
+
+detailToggle.addEventListener("click", () => {
+  detailMode = !detailMode;
+  localStorage.setItem(DETAIL_KEY, detailMode);
+  applyDetailMode();
 });
 
 if (session && session.currentIndex >= meals.length) {
